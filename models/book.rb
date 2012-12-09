@@ -6,14 +6,6 @@ class Book
   key :number_of_pages, Integer
   #self.key(:number_of_pages, Integer)
   timestamps!
-
-  def butts
-    return "hey"
-  end
-  
-  def butts!
-    return "hey"
-  end
 end
 
 # module MongoMapper::Document

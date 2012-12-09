@@ -5,9 +5,6 @@
 <b>Created At:</b> <%= book.created_at %><br />
 <b>Updated At:</b> <%= book.updated_at %><br />
 <b>ID:</b> <%= book.id %><br />
-<b>Options:</b> <a href="/books/edit/<%= book.id %>">Edit</a> | <a href="/books/destroy/<%= book.id %>">Destroy</a>
+<b>Options:</b> <a href="/books/new/<%= book.id %>">Create</a> | <a href="/books/edit/<%= book.id %>">Edit</a> | <a href="/books/destroy/<%= book.id %>">Destroy</a>
 <hr/>
 <% end %>
-<a href="/books/new">Create a book</a> | 
-<a href="/authors/new">Create an author</a> | 
-<a href="/authors/new">View All Authors</a>
