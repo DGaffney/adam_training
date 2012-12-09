@@ -1,0 +1,9 @@
+<h1>Edit an existing author!</h1>
+<form action="/authors/edit/<%= @author.id %>" method="post">
+  First Name:
+  <input type="text" name="firstname" value="<%= @author.firstname %>"/>
+  Last Name:
+  <input type="text" name="lastname" value="<%= @author.lastname %>"/>
+  <input type="submit" value="Submit">
+</form>
+<a href="/authors">Back</a>

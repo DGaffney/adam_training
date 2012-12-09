@@ -1,0 +1,10 @@
+<h1>Authors</h1>
+<% @authors.each do |author| %>
+<b>First Name:</b> <%= author.firstname %><br />
+<b>Last Name:</b> <%= author.lastname %><br />
+<b>Created At:</b> <%= author.created_at %><br />
+<b>Updated At:</b> <%= author.updated_at %><br />
+<b>ID:</b> <%= author.id %><br />
+<b>Options:</b> <a href="/authors/new/<%= author.id %>">Create</a> | <a href="/authors/edit/<%= author.id %>">Edit</a> | <a href="/authors/destroy/<%= author.id %>">Destroy</a>
+<hr/>
+<% end %>
