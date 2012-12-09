@@ -1,8 +1,9 @@
 <h1>Add a new book!</h1>
 <form action="/books/edit/<%= @book.id %>" method="post">
   Title:
-  <input type="text" name="title"/>
+  <input type="text" name="title" value="<%= @book.title %>"/>
   Number of Pages:
-  <input type="text" name="number_of_pages"/>
+  <input type="text" name="number_of_pages" value="<%= @book.number_of_pages %>"/>
   <input type="submit" value="Submit">
 </form>
+<a href="/books">Back</a>
