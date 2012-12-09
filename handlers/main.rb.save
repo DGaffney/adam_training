@@ -1,0 +1,14 @@
+get "/" do
+  puts params.inspect
+  erb :"hello"
+end
+
+post "/comment" do
+  comment = Comment.new
+  comment.name = params[:name]
+  comment.website = params[:website]
+  comment.comment = params[:comment]
+  comment.email = make_sure_its_an_email(params[:email])
+  comment.save
+  "Thanks. Faggot."
+end
