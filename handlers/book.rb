@@ -1,6 +1,6 @@
 #This is the place where anything that has to do directly with books lives.
 
-get "/books" do
+get "/books/" do
   @books = Book.all
   erb :"books/index"
 end
@@ -16,7 +16,23 @@ post "/books/new" do
   @book.number_of_pages = params[:number_of_pages]
   puts @book.inspect
   @book.save
-  erb :"books/index"
+  redirect "/books/"
+end
+
+
+get "/books/edit/:book_id" do
+  @book = Book.first(:id => params[:book_id])
+  erb :"books/edit"
+end
+
+post "/books/edit/:book_id" do
+  puts params.inspect
+  @book = Book.first(:id => params[:book_id])
+  @book.title = params[:title]
+  @book.number_of_pages = params[:number_of_pages]
+  puts @book.inspect
+  @book.save
+  redirect "/books/"
 end
 
 # self.erb(:"some/path/to/a/file") => Go look in the views folder, find the file matching

@@ -1,2 +1,9 @@
-Hello
-<%= @books %>
+<h1>Books</h1>
+<% @books.each do |book| %>
+Title: <%= book.title %><br />
+Number of Pages: <%= book.number_of_pages %><br />
+Created At: <%= book.created_at %><br />
+Updated At: <%= book.updated_at %><br />
+ID: <%= book.id %><br />
+<hr/>
+<% end %>

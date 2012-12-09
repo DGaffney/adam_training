@@ -15,3 +15,10 @@ class Book
     return "hey"
   end
 end
+
+# module MongoMapper::Document
+#   def timestamps!
+#     key :created_at, DateTime, :default => Time.now
+#     key :updated_at, DateTime, :default => Time.now
+#   end
+# end
