@@ -1,0 +1,9 @@
+<h1>Add a new book!</h1>
+<%= @book.attributes %>
+<form action="/books/new" method="post">
+  Title:
+  <input type="text" name="title"/>
+  Number of Pages:
+  <input type="text" name="number_of_pages"/>
+  <input type="submit" value="Submit">
+</form>
