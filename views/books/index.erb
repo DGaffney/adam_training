@@ -1,10 +1,11 @@
 <h1>Books</h1>
+<a href="/books/new">New Book</a><br />
 <% @books.each do |book| %>
 <b>Title:</b> <%= book.title %><br />
 <b>Number of Pages:</b> <%= book.number_of_pages %><br />
 <b>Created At:</b> <%= book.created_at %><br />
 <b>Updated At:</b> <%= book.updated_at %><br />
 <b>ID:</b> <%= book.id %><br />
-<b>Options:</b> <a href="/books/new/<%= book.id %>">Create</a> | <a href="/books/edit/<%= book.id %>">Edit</a> | <a href="/books/destroy/<%= book.id %>">Destroy</a>
+<b>Options:</b> <a href="/books/edit/<%= book.id %>">Edit</a> | <a href="/books/destroy/<%= book.id %>">Destroy</a>
 <hr/>
 <% end %>

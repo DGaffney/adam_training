@@ -6,6 +6,7 @@ get "/books" do
 end
 
 get "/books/new" do
+  @book = Book.new
   erb :"books/new"
 end
 

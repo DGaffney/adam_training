@@ -4,6 +4,7 @@ get "/authors" do
 end
 
 get "/authors/new" do
+  @author = Author.new
   erb :"authors/new"
 end
 

@@ -1,9 +1,9 @@
 <h1>Add a new author!</h1>
 <form action="/authors/new" method="post">
   First Name:
-  <input type="text" name="firstname"/>
+  <input type="text" name="firstname" value="<%= @author.firstname %>"/>
   Last Name:
-  <input type="text" name="lastname"/>
+  <input type="text" name="lastname" value="<%= @author.lastname %>"/>
   <input type="submit" value="Submit">
 </form>
 <a href="/authors">Back</a>
