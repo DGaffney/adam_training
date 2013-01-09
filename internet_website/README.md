@@ -3,6 +3,9 @@ adam_training
 
 A training repository for teaching Adam Sinatra, Mongo, Ruby, and general development.
 
+1 - internet_website
+====================
+
 Basic flow for git:
 
 1. make changes all over the place. 
