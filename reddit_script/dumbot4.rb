@@ -18,20 +18,15 @@ listing.each { |x| x.keep_if { |key, val| key == "title" ||
                                           key == "subreddit" || 
                                           key == "id" } }
 
-#Create an array containing the data hashes of the first comments on each post
+#Create an array containing the bodies of the top comments on each post
 #--For each hash (post) in the listing array, pass the hash's values for 
-#----subreddit and id as arguments in the hash that snoo.get_comments requests.
-#----:limit 1 points to the top post in that comment thread.
-#--This creates an array of fuckall hashes name 'comments'.
-comments = listing.map { |x| reddit.get_comments({:subreddit => x["subreddit"], :link_id => x["id"], :limit => 1}) }
+#--subreddit and id as arguments into the hash that snoo.get_comments requests.
+#--:limit 1 points to the top post in that comment thread.
+#--Then sift through the 'comment' data for the actual *body* of the comment.
+#--Ultimately returns an array of strings, each string is the body of the comment.
+comments = listing.map { |x| reddit.get_comments( { :subreddit => x["subreddit"], :link_id => x["id"], :limit => 1 } )[1]["data"]["children"][0]["data"]["body"] }
 
-#Print the horrible god forsaken mess that is the comments array.
-p comments
-
-
-
-
-
-#----"comments[0][1]["data"]["children"][0]["data"]["body"]" should address the 
-#----body of the first comment in the comments array, but it seems hacky and
-#----i am looking for a better way.
+#For each comment, get its index and use that to reference the corresponding post in listing
+#--Print the index (from 1), the title, and the comment
+comments.each { |c| i = comments.index(c)
+                    print "\n  #{ i+1 }:  #{ listing[i]["title"] }\n       \"#{ c }\"\n\n" }
