@@ -1,3 +1,3 @@
 get "/" do
-  erb :"hello"
+  erb :"home"
 end

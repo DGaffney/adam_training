@@ -5,6 +5,9 @@ require 'erb'
 require 'yaml'
 require 'digest/sha1'
 require 'hashie'
+require 'open-uri'
+require 'json'
+require 'snoo'
 
 ENVIRONMENT = "development"
 

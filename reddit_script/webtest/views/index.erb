@@ -1,0 +1,12 @@
+<% reddit = Snoo::Client.new %>
+
+<% comments = reddit.get_comments( { :subreddit => "science", 
+                                     :depth => 1, 
+                                     :limit => 25 } )["data"]["children"].collect { |x| x["data"] } %>
+
+<% comments.each do |x| %>
+<b>Post # <%= comments.index(x) + 1 %><br />Title: </b> <%= x["link_title"] %><br />
+<b>Body: </b> <%= x["body"] %><br />
+<b>Author: </b> <%= x["author"] %><br />
+<hr/>  
+<% end %>

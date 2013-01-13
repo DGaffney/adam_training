@@ -1,0 +1,8 @@
+<h1>Reddit top posts and comments.</h1>
+<a href="/posts/new">Generate new set?</a><br />
+<% @posts.each do |post| %>
+<b>Title:</b> <%= post.title %><br />
+<b>Body:</b> <%= post.body %><br />
+<b>ID:</b> <%= post.id %><br />
+<hr/>
+<% end %>
