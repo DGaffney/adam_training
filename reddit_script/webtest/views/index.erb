@@ -1,6 +1,6 @@
 <% @comments.each do |comment| %>
-<br />Thread Title: </b> <%= comment.link_title %><br />
+<br /><b>Thread Title: </b> <%= comment.link_title %><br />
 <b>Body: </b> <%= comment.body %><br />
-<b>Author: </b> <%= comment.author %><br />
+<b>Author: </b> <a href="http://reddit.com/u/<%= comment.author %>" target="_blank"><%= comment.author %></a><br />
 <hr/>  
 <% end %>

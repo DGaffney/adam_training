@@ -27,3 +27,6 @@ gem 'tux', '0.3.0'
 gem 'bundler', '1.2.3'
 gem 'twitter'
 gem 'snooby'
+gem "pry"
+gem "pry-nav"
+gem "pry-debugger"

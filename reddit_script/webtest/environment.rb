@@ -9,6 +9,7 @@ require 'hashie'
 require 'open-uri'
 require 'json'
 require 'snooby'
+require 'pry'
 
 ENVIRONMENT = "development"
 

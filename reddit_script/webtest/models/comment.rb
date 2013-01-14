@@ -22,7 +22,7 @@ class Comment
     reddit = Snooby::Client.new('Adam Test Bot')
     reddit.authorize!(session[:user], session[:password])
     comments = reddit.subreddit(subreddit_title).comments
-    self.store_comments(comments)
+    Comment.store_comments(comments)
     return comments
   end
   
@@ -50,3 +50,4 @@ class Comment
     end
   end
 end
+Comment.ensure_index [[:id, 1]], :unique => true

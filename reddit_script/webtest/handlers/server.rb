@@ -3,6 +3,7 @@ get '/login' do
 end
 
 post '/login' do
+  binding.pry
   session[:user] = params[:user]
   session[:password] = params[:password]
   redirect "/"
@@ -15,6 +16,7 @@ get '/logout' do
 end
 
 get '/' do
+  binding.pry
   subreddit_title = "all"
   @comments = Comment.get_comments_for_subreddit(subreddit_title, session)
   erb :"index"
