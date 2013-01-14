@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/mongomapper'
+require 'mongo_mapper'
 require 'erb'
 require 'yaml'
 require 'digest/sha1'
