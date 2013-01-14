@@ -6,7 +6,10 @@
   <link href="/reset.css" rel="stylesheet">  
   <link href="/style.css" rel="stylesheet">  
 </head>  
-<body>  
+<body>
+  <% if logged_in? %>
+  <a href="/logout">Logout</a>
+  <% end %>
   <header>  
     <hgroup>  
       <h1><a href="/">Reddit Thing</a></h1>  
