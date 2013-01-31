@@ -1,5 +1,3 @@
-# temp_comments = nil
-
 get '/login' do
   erb :"login"
 end
@@ -19,7 +17,6 @@ end
 get '/' do
   subreddit_title = "all"
   @@comments = Comment.get_comments_for_subreddit(subreddit_title, session)
-  # temp_comments = @comments
   erb :"index"
 end
 
