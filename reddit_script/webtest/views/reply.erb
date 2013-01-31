@@ -1,0 +1,13 @@
+<h1>REPLY</h1>
+<article>
+  <h3><%= @@parent_comment.link_title %></h3>
+  <a href="http://reddit.com/u/<%= @@parent_comment.author %>" target="_blank"><%= @@parent_comment.author %>:</a>
+  <br />
+  <pre><%= @@parent_comment.body %></pre>
+</article>
+<hr/>
+<form action="/reply/<%= @@parent_comment.name %>" method="post">
+  <input type="text" name="reply_body">
+  <input type="submit" value="Submit">
+</form>
+<br />

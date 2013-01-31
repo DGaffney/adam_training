@@ -25,7 +25,7 @@ class Comment
     Comment.store_comments(comments)
     return comments
   end
-  
+
   def self.store_comments(comments)
     comments.each do |comment|
       c = Comment.new
@@ -49,5 +49,6 @@ class Comment
       c.save
     end
   end
+
 end
-Comment.ensure_index [[:id, 1]], :unique => true
+Comment.ensure_index [[:name, 1]], :unique => true
