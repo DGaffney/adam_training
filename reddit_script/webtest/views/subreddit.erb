@@ -1,0 +1,11 @@
+<% @@posts.each do |post| %> 
+<article>
+  <h3><%= post.title %></h3>
+  <% if post.selftext.length > 0%>  
+    <pre><%= post.selftext %></pre>
+  <% else %>
+    <br />
+  <% end %>
+  <span><a href="<%= post.url %>">[link]</a> | <a href="/post/<%= post.name %>">[comments]</a> | <a href="http://reddit.com/u/<%= post.author %>" target="_blank">[<%= post.author %>]</a></span>
+</article>
+<% end %>

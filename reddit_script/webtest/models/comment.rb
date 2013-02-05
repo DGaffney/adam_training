@@ -18,10 +18,10 @@ class Comment
   key :subreddit_id, String
   key :ups, Fixnum
   
-  def self.get_comments_for_subreddit(subreddit_title, session)
+  def self.get_comments_for_post(session)
     reddit = Snooby::Client.new('Adam Test Bot')
     reddit.authorize!(session[:user], session[:password])
-    comments = reddit.subreddit(subreddit_title).comments
+    comments = @@post.comments
     Comment.store_comments(comments)
     return comments
   end

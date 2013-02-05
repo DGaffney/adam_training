@@ -18,26 +18,38 @@ get '/' do
   redirect '/r/all'
 end
 
-get '/r/:subreddit' do
-  subreddit_title = params[:subreddit]
-  @@comments = Comment.get_comments_for_subreddit(subreddit_title, session)
-  @title = "/r/#{params[:subreddit]}"
-  erb :"index"
+get '/r/:subreddit_title' do
+  @@subreddit_title = params[:subreddit_title]
+  
+  @@posts = Post.get_posts_for_subreddit(@@subreddit_title,session)
+
+  @title = "/r/#{@@subreddit_title}"
+  erb :"subreddit"
 end
 
-get '/reply/:parent_name' do
-  parent_name = params[:parent_name]
-  @@parent_comment = @@comments.find {|comment| comment.name === parent_name}
-  @title = "/r/#{@@parent_comment.subreddit}"
+get '/post/:post_name' do
+  @@post_name = params[:post_name]
+  
+  @@post = @@posts.find {|post| post.name === @@post_name}
+  @@comments = Comment.get_comments_for_post(session)
+
+  @title = "/r/#{@@subreddit_title}/#{@@post_name}"
+  erb :"post"
+end
+
+get '/reply/:comment_name' do
+  @@comment_name = params[:comment_name]
+
+  @@comment = @@comments.find {|comment| comment.name === @@comment_name}
+
+  @title = "reply to /r/#{@@subreddit_title}/#{@@post_name}/#{@@comment_name}"
   erb :"reply"
 end
 
-post '/reply/:parent_name' do
-  reply_body = params[:reply_body]
-  @@parent_comment.reply(reply_body)
-  redirect "/r/#{@@parent_comment.subreddit}"
-end
+post '/reply/:comment_name' do
+  @reply_body = params[:reply_body]
 
-get '/request' do
-  request.env.map { |e| e.to_s + "\n"}
+  @@comment.reply(@reply_body)
+
+  redirect "/post/#{@@post_name}"
 end
