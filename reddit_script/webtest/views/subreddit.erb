@@ -2,10 +2,10 @@
 <article>
   <h3><%= post.title %></h3>
   <% if post.selftext.length > 0%>  
-    <pre><%= post.selftext %></pre>
+    <p><%= post.selftext %></p>
   <% else %>
     <br />
   <% end %>
-  <span><a href="<%= post.url %>">[link]</a> | <a href="/post/<%= post.name %>">[comments]</a> | <a href="http://reddit.com/u/<%= post.author %>" target="_blank">[<%= post.author %>]</a></span>
+  <span><strong><%= post.ups - post.downs %></strong> (<%= post.ups %> up, <%= post.downs %> down) | <a href="<%= post.url %>">[link]</a> | <a href="/post/<%= post.name %>">[comments]</a> | <a href="http://reddit.com/u/<%= post.author %>" target="_blank">[<%= post.author %>]</a></span>
 </article>
 <% end %>

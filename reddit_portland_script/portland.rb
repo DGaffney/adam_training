@@ -1,5 +1,12 @@
-class Comment  
+require 'bundler/setup'
+require 'snooby'
+require 'mongo_mapper'
+
+MongoMapper.database = 'clean'
+
+class Comment
   include MongoMapper::Document
+  
   key :author, String
   key :author_flair_css_class, String
   key :author_flair_text, String
@@ -17,20 +24,16 @@ class Comment
   key :subreddit, String
   key :subreddit_id, String
   key :ups, Fixnum
-  
-  def self.get_comments_for_post(session)
-    reddit = Snooby::Client.new('Adam Test Bot')
-    reddit.authorize!(session[:user], session[:password])
-    comments = @@post.comments
-    Comment.store_comments(comments)
-    return comments
-  end
+  timestamps!
 
-  def self.get_comments_for_all(session)
+  def self.get_comments(subreddit)
     reddit = Snooby::Client.new('Adam Test Bot')
-    reddit.authorize!(session[:user], session[:password])
-    comments = reddit.subreddit('all').comments(1000)
+
+    comments = reddit.subreddit(subreddit).comments(1000)
+
     Comment.store_comments(comments)
+
+    comments
   end
 
   def self.store_comments(comments)
@@ -57,5 +60,16 @@ class Comment
     end
   end
 
+  def self.subreddit_frequency
+    frequency = Hash.new(0)
+
+    Comment.each { |comment| frequency[comment.subreddit] += 1 }
+
+    sorted = frequency.sort_by { |_, count| count }
+    puts sorted.map { |subreddit, count| "#{subreddit}: #{count}" }
+
+    frequency
+  end
 end
+
 Comment.ensure_index [[:name, 1]], :unique => true

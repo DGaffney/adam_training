@@ -25,6 +25,7 @@ get '/r/:subreddit_title' do
 
   @title = "/r/#{@@subreddit_title}"
   erb :"subreddit"
+  binding.pry
 end
 
 get '/post/:post_name' do
@@ -33,7 +34,7 @@ get '/post/:post_name' do
   @@post = @@posts.find {|post| post.name === @@post_name}
   @@comments = Comment.get_comments_for_post(session)
 
-  @title = "/r/#{@@subreddit_title}/#{@@post_name}"
+  @title = "/post/#{@@post_name}"
   erb :"post"
 end
 
@@ -42,7 +43,7 @@ get '/reply/:comment_name' do
 
   @@comment = @@comments.find {|comment| comment.name === @@comment_name}
 
-  @title = "reply to /r/#{@@subreddit_title}/#{@@post_name}/#{@@comment_name}"
+  @title = "/post/#{@@post_name}"
   erb :"reply"
 end
 
@@ -52,4 +53,14 @@ post '/reply/:comment_name' do
   @@comment.reply(@reply_body)
 
   redirect "/post/#{@@post_name}"
+end
+
+get '/dostuff' do
+  @count = Comment.count
+  Comment.get_comments_for_all(session)
+
+  @countdiff = Comment.count - @count
+
+  @title = "stuff"
+  erb :"stuff"
 end

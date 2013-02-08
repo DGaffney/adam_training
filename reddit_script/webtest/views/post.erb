@@ -1,15 +1,17 @@
-<h3><%= @@post.title %></h3>
-<% if @@post.selftext.length > 0%>  
-  <pre><%= @@post.selftext %></pre>
-<% else %>
-  <br />
-<% end %>
-<% @@comments.each do |comment| %> 
 <article>
-  <a href="http://reddit.com/u/<%= comment.author %>" target="_blank"><%= comment.author %>:</a>
+  <h3><%= @@post.title %></h3>
+  <% if @@post.selftext.length > 0%>  
+  <pre><%= @@post.selftext %></pre>
+  <% else %>
   <br />
-  <pre><%= comment.body %></pre>
-  <br />
-  <span><%= comment.ups %> up, <%= comment.downs %> down | <a href="/reply/<%= comment.name %>">[reply]</a></span>
+  <% end %>
+  <% @@comments.each do |comment| %> 
+  <article>
+    <a href="http://reddit.com/u/<%= comment.author %>" target="_blank"><%= comment.author %>:</a>
+    <br />
+    <p><%= comment.body %></p>
+    <br />
+    <span><%= comment.ups %> up, <%= comment.downs %> down | <a href="/reply/<%= comment.name %>">[reply]</a></span>
+  </article>
+  <% end %>
 </article>
-<% end %>
